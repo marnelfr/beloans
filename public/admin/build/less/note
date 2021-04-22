@@ -1,0 +1,154 @@
+ajouter des informations affichable sur l'utlisateur comme son avoir en compte et le taille total de ses fichiers uploader par exemple.
+Après ça, faire ce qui reste comme bouton à coder sur la page de gestion des utilisateurs.
+
+
+
+
+<div class="modal fade" id="modifierModal<?= $utilisateur->idUser ?>">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="example-modal">
+                <div class="modal modal-success"  align="left">
+                    <div class="modal-header">
+                        <button style="position: relative; top: -10px;" class="close pull-right" data-dismiss="modal">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+
+                        <div class="box-body">
+                        <form role="form" action="index.php?p=admin/modification" name="modify<?= $utilisateur->idUser ?>" method="post">
+                            <div class="form-group col-md-12">
+                                <label>Nom:</label>
+                                <input style="width: 550px" value="<?= $utilisateur->nom ?>" type="text" name="nom" class="form-control" placeholder="Nom"/>
+                                <input style="width: 550px; display: none" value="<?= $utilisateur->idUser ?>" type="text" name="id" class="form-control" placeholder="Nom"/>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Prénom:</label>
+                                <input style="width: 550px" value="<?= $utilisateur->prenom ?>" type="text" name="prenom" class="form-control" placeholder="Prénom"/>
+                            </div>
+                            <!--<div style="margin-top: 22px; margin-left: -19px" class="radio-inline col-md-6">
+                                <div class="col-md-4">
+                                    <b>Sexe :</b>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <?php
+                            /*                                                                                    if(strtoupper($utilisateur->sexe) === 'M'){
+                                                                                                                    $checkedm = 'checked';
+                                                                                                                    $checkedf = null;
+                                                                                                                }else{
+                                                                                                                    $checkedf = 'checked';
+                                                                                                                    $checkedm = null;
+                                                                                                                }
+                                                                                                                */?>
+                                    <label>
+                                        <input type="radio" <?/*= $checkedm */?> id="sexe" value="M" name="sexe"> Masculin
+                                    </label>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>
+                                        <input type="radio" <?/*= $checkedf */?> id="sexe" value="F" name="sexe"> Féminin
+                                    </label>
+                                </div>
+                            </div>-->
+                            <!-- Date dd/mm/yyyy -->
+                            <!--<div name="date" class="form-group col-md-12">
+                                <label>Date de naissance:</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input style="width: 515px" value="<?/*= $utilisateur->naissance */?>" type="text" name="date" class="form-control" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask/>
+                                </div><!-- /.input group ->
+                            </div>--><!-- /.form group -->
+                            <!-- phone mask -->
+                            <div class="form-group col-md-12">
+                                <label>Numéro de compte:</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <input type="text" value="<?= $utilisateur->num ?>" name="num" style="width: 515px" class="form-control" />
+                                </div><!-- /.input group -->
+                            </div><!-- /.form group -->
+                            <div class="form-group col-md-12">
+                                <label for="exampleInputEmail1">Email:</label>
+                                <input type="email" class="form-control" name="email" value="<?= $utilisateur->email ?>" style="width: 550px" id="exampleInputEmail1" placeholder="Email">
+                            </div>
+                            <!--<div class="form-group col-md-12">
+                                <label>Profession:</label>
+                                <input style="width: 550px" value="<?/*= $utilisateur->profession */?>" type="text" class="form-control" name="profession" placeholder="Ville de residence"/>
+                            </div>-->
+                            <div style="margin-bottom: 10px; margin-top: 15px" class="form-group col-md-12">
+                                <button type="reset" class="btn btn-warning pull-left">Annuler</button>
+                                <button type="button" onclick="document.forms['modify<?= $utilisateur->idUser ?>'].submit()" class="btn btn-primary pull-right">Enregistrer</button>
+                            </div>
+                        </form>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div align="left" class="modal fade" id="messageModal<?= $utilisateur->idUser ?>">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="example-modal">
+                <div class="modal modal-success">
+                    <div class="modal-header">
+                        <button style="position: relative; top: -10px;" class="close pull-right" data-dismiss="modal">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-header">
+                        <i class="fa fa-envelope"></i>
+
+                        <h3 class="modal-title">Envois rapide</h3>
+                    </div>
+                    <form action="index.php?p=admin.fastSending" method="post">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input style="width: 580px;" value="<?= $utilisateur->email ?>" type="email" class="form-control" name="destinataire">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" style="width: 580px; margin-top: 15px" class="form-control" name="sujet" placeholder="Sujet">
+                            </div>
+                            <div>
+                                <textarea class="textarea" name="contenu" placeholder="Message" style="width: 100%; margin-top: 15px; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                            </div>
+                        </div>
+                        <div class="box-footer clearfix">
+                            <button type="submit" class="pull-right btn btn-default" id="sendEmail">
+                                Envoyer <i class="fa fa-arrow-circle-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+Made by Marnel GNACADJA 97-40-36-27
